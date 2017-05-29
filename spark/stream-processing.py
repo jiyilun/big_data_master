@@ -42,9 +42,16 @@ def shutdown_hook(producer):
 
 
 def process(timeobj, rdd):
+
+    # - do average
     num_of_records = rdd.count()
     if num_of_records == 0:
         return
+    
+    # - sum up all the price in this rdd
+    # - for each rdd record, do something (take out the LastTradingPrice, json) -> map
+    # - for all the rdd record, sum up
+       
     price_sum = rdd \
         .map(lambda record: float(json.loads(record[1].decode('utf-8'))[0].get('LastTradePrice'))) \
         .reduce(lambda a, b: a + b)
