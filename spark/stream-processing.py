@@ -69,6 +69,9 @@ def process(timeobj, rdd):
         logger.warn('Failed to send average stock price to kafka, caused by: %s', error.message)
 
 if __name__ == '__main__':
+
+    # - sys.argv is an array:
+    # - sys.argv[0] stream-process.py, sys.argv[1] broker location, sys.argv[2] topic
     if len(sys.argv) != 4:
         print("Usage: stream-process.py [topic] [target-topic] [broker-list]")
         exit(1)
