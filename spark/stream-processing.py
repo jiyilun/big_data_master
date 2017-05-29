@@ -50,7 +50,7 @@ def process(timeobj, rdd):
     
     # - sum up all the price in this rdd
     # - for each rdd record, do something (take out the LastTradingPrice, json) -> map
-    # - for all the rdd record, sum up
+    # - for all the rdd record, sum up -> reduce
        
     price_sum = rdd \
         .map(lambda record: float(json.loads(record[1].decode('utf-8'))[0].get('LastTradePrice'))) \
